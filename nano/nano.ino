@@ -8,6 +8,7 @@ void setup() {
 
   pinMode(SW_pin, INPUT);
   //digitalWrite(SW_pin, HIGH);
+  //Test
 }
 
 void loop() {
