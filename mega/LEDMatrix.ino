@@ -1,4 +1,5 @@
 #include <FastLED.h>
+#include <LinkedList.h>
 
 const int LEDDataPin = 8;
 const int amountLEDs = 484;
@@ -114,6 +115,14 @@ void drawSnake(CRGB color, int snakePosition[5][2])
   for(int i = 0; i < 5; i++)
   {
     leds[getArrayIndexWithCoordinates(snakePosition[i][0], snakePosition[i][1])] = color;
+  }
+}
+
+void drawSnake(CRGB color, LinkedList linkedList)
+{
+  for(int i = 0; i < linkedList.size(); i++)
+  {
+    leds[getArrayIndexWithCoordinates(linkedList.get(i).xCor, linkedList.get(i).yCor)] = color;
   }
 }
 
