@@ -1,5 +1,3 @@
-#include <FastLED.h>
-
 int currentBlock[4][2];
 
 void startTetris()

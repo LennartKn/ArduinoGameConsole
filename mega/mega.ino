@@ -1,5 +1,24 @@
 #include <FastLED.h>
+#include <LinkedList.h>
 
+//global variables
+class Coordinates {
+  public:
+    int row;
+    int col;
+};
+LinkedList<Coordinates*> linkedList = LinkedList<Coordinates*>();
+Coordinates *pointCoordinate = new Coordinates();;
+boolean gameover;
+int points = 0;
+typedef  enum snakeDirections {RIGHT, LEFT, TOP, DOWN}; 
+int snakeDirection;
+
+enum Element { ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, CURRENTOPTION, QUESTIONMARK, A, B, R };
+
+int brightness;
+
+//main variables
 char btData = '0';
 int surface;
 
@@ -45,13 +64,18 @@ void inputMenu(int input)
 
 void inputSnake(int input)
 {
-  switch(input) 
-   {   
-      case '0': moveSnakeForward();break;     
-      case '1': turnSnakeRight();break;
-      case '2': turnSnakeLeft();break;
-      default: break;
-   }    
+  if(gameover)
+    showGameOverScreen(input);
+  else
+  {
+    switch(input) 
+     {   
+        case '0': moveSnakeForward();break;     
+        case '1': turnSnakeRight();break;
+        case '2': turnSnakeLeft();break;
+        default: break;
+     }    
+   }
 }
 
 void inputTetris(int input)
@@ -71,6 +95,12 @@ void inputOptions(int input)
 {
    switch(btData) 
    {
+        case '1': optionHigher();break;
+        case '2': optionLower();break;
+        case '3': currentChoiceOptionBackward(); break;
+        case '4': currentChoiceOptionNext(); break;
+        case '5': surface = selectChoiceOption(); break;
+        default: break;
    }
 }
 

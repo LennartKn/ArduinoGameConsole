@@ -1,13 +1,14 @@
-#include <FastLED.h>
-
 int currentChoice;
 
 void showMenu()
 {
   currentChoice = 0;
 
-  draw(ONE, CRGB::Red, 1, 0);
-  draw(TWO, CRGB::Red, 8, 0);
+  clearLEDMatrix();
+  
+  drawNumber(ONE, CRGB::Red, 1, 0);
+  drawNumber(TWO, CRGB::Red, 8, 0);
+  draw(THREE, CRGB::Red, 15, 0);
   
   draw(CURRENTOPTION, CRGB::Blue, 0, 0);
   
@@ -25,6 +26,7 @@ void currentChoiceNext()
 
   draw(ONE, CRGB::Red, 1, 0);
   draw(TWO, CRGB::Red, 8, 0);
+  draw(THREE, CRGB::Red, 15, 0);
   draw(CURRENTOPTION, CRGB::Blue, currentChoice*7, 0);
 
   refreshLEDMatrix();  
@@ -40,7 +42,8 @@ void currentChoiceBackward()
   clearLEDMatrix();
   
   draw(ONE, CRGB::Red, 1, 0);
-  draw(TWO, CRGB::Red, 8, 0);  
+  draw(TWO, CRGB::Red, 8, 0);
+  draw(THREE, CRGB::Red, 15, 0);  
   draw(CURRENTOPTION, CRGB::Blue, currentChoice*7, 0);
   
   refreshLEDMatrix();
