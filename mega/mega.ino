@@ -8,7 +8,7 @@ class Coordinates {
     int col;
 };
 LinkedList<Coordinates*> linkedList = LinkedList<Coordinates*>();
-Coordinates *pointCoordinate = new Coordinates();;
+Coordinates *pointCoordinate = new Coordinates();
 boolean gameover;
 int points = 0;
 typedef  enum snakeDirections {RIGHT, LEFT, TOP, DOWN}; 
@@ -64,6 +64,8 @@ void inputMenu(int input)
 
 void inputSnake(int input)
 {
+  Serial.write(input);
+  
   if(gameover)
     showGameOverScreen(input);
   else
@@ -73,6 +75,8 @@ void inputSnake(int input)
         case '0': moveSnakeForward();break;     
         case '1': turnSnakeRight();break;
         case '2': turnSnakeLeft();break;
+        case '6': turnSnakeLeft();break;
+        case '7': turnSnakeRight();break;
         default: break;
      }    
    }
