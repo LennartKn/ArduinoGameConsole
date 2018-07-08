@@ -36,8 +36,8 @@ void setup() {
  
 void loop() 
 {   
-    Serial.print("Mem");
-    Serial.print(freeMemory());
+    //Serial.print("Mem");
+    //Serial.print(freeMemory());
   
     switch(surface)
     {
@@ -90,10 +90,9 @@ void inputTetris(int input)
 {
    switch(input) 
    {
+      case '0': moveBlock(1,0);break;
       case '1': moveBlock(0,1);break;
       case '2': moveBlock(0,-1);break;
-      case '3': moveBlock(1,0);break;
-      case '4': moveBlock(-1,0);break;
       case '5': rotate(); break;
       default: break;
    }   
