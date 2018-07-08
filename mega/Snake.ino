@@ -1,7 +1,7 @@
-
 void startSnake()
 {
   linkedList.clear();
+  
   points = 0;
   
   Coordinates *coordinate0 = new Coordinates();
@@ -46,8 +46,9 @@ void moveSnakeForward()
     delay(200);
     
     clearLEDMatrix();    
+
     Coordinates *newCoordinate = new Coordinates();
-        
+    
     switch(snakeDirection)
     {       
       case RIGHT: 
@@ -72,14 +73,18 @@ void moveSnakeForward()
     if(isHiT(newCoordinate))
       gameover = true;        
 
+    Coordinates *delCor = linkedList.get(0);    
+    delete delCor;
+    
     linkedList.add(newCoordinate);
     linkedList.remove(0);
     drawSnakeList(CRGB::Yellow);
-
+    
     checkForPoint(newCoordinate);
     drawPoint(CRGB::Blue);
 
     refreshLEDMatrix();
+
 }
 
 void turnSnakeRight()
@@ -125,7 +130,8 @@ void checkForPoint(Coordinates *coordinate)
 {
   if( (coordinate -> row == pointCoordinate -> row) && (coordinate -> col == pointCoordinate -> col) )
   {
-    linkedList.unshift(coordinate);  
+    Coordinates *addedCoordinate = new Coordinates;
+    linkedList.unshift(addedCoordinate);  
     
     clearLEDMatrix();
     drawSnakeList(CRGB::Yellow);  

@@ -1,5 +1,6 @@
 #include <FastLED.h>
 #include <LinkedList.h>
+#include <MemoryFree.h>;
 
 //global variables
 class Coordinates {
@@ -14,7 +15,9 @@ int points = 0;
 typedef  enum snakeDirections {RIGHT, LEFT, TOP, DOWN}; 
 int snakeDirection;
 
-enum Element { ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, CURRENTOPTION, QUESTIONMARK, A, B, R };
+enum Element { ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, 
+              CURRENTOPTION, QUESTIONMARK, 
+              A, B, R, SNAKE, TETRIS, OPT };
 
 int brightness;
 
@@ -33,6 +36,9 @@ void setup() {
  
 void loop() 
 {   
+    Serial.print("Mem");
+    Serial.print(freeMemory());
+  
     switch(surface)
     {
       case 0: inputMenu(btData);break; //Menu
@@ -48,7 +54,7 @@ void loop()
 void serialEvent()
 {
   btData = Serial.read();
-  Serial.print(btData);
+  //Serial.print(btData);
 }
 
 void inputMenu(int input)
@@ -64,8 +70,6 @@ void inputMenu(int input)
 
 void inputSnake(int input)
 {
-  Serial.write(input);
-  
   if(gameover)
     showGameOverScreen(input);
   else

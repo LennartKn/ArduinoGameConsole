@@ -15,6 +15,8 @@ char hexaKeys[ROWS][COLS]={
 byte colPins[COLS] = { 4, 5 };
 byte rowPins[ROWS] = { 6, 7 };
 
+int last = 0;
+
 char pressedKey;
 
 Keypad myKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
@@ -28,16 +30,34 @@ void setup() {
 }
 
 void loop() {
+
   if(analogRead(xpin) > 700)
-    Serial.write('1'); //Right
+  {
+    if (last != 1) Serial.write('1'); //Right
+    last = 1;
+  }
   else if(analogRead(xpin) < 300)
-    Serial.write('2'); //Left
+  {
+    if (last != 2) Serial.write('2'); //Left
+    last = 2;
+  }
   else if(analogRead(ypin) <300)
-    Serial.write('3'); //Top
+  {
+    if (last != 3) Serial.write('3'); //Top
+    last = 3;
+  }
   else if(analogRead(ypin) > 700)
-    Serial.write('4'); //Down
+  {
+    if (last != 4) Serial.write('4'); //Down
+    last = 4;
+  }
   else if(!digitalRead(SW_pin))
-    Serial.write('5'); //Button
+  {
+   if (last != 5) Serial.write('5'); //Button
+    last = 5;
+  }
+  else 
+    last = 0;
 
   pressedKey = myKeypad.getKey();
 
@@ -56,5 +76,5 @@ void loop() {
        
   }
   
-  delay(200);
+  delay(10);
 }

@@ -50,7 +50,9 @@ void draw(int element, CRGB color, int startRow, int startCol)
     case NINE: drawNine(color, startRow, startCol); break;
     case CURRENTOPTION: drawCurrentOption(color, startRow, startCol); break;
     case B: drawB(color, startRow, startCol); break;
-    case R: drawR(color, startRow, startCol); break;;
+    case R: drawR(color, startRow, startCol); break;
+    case SNAKE: drawSnake(color, startRow, startCol); break;
+    case TETRIS: drawTetris(color, startRow, startCol); break;
     default: QUESTIONMARK: drawQuestionMark(color, startRow, startCol); break;
   }
 }
@@ -65,6 +67,16 @@ void drawNumber(int number, CRGB color, int startRow, int startCol)
      int intValue = oneValue.toInt();    
      draw(intValue, color, startRow, startCol +  i * 4);
   }
+}
+
+void drawSnake(CRGB color, int row, int col)
+{
+  
+}
+
+void drawTetris(CRGB color, int row, int col)
+{
+  
 }
 
 void drawZero(CRGB color, int row, int col)

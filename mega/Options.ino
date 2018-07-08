@@ -26,6 +26,7 @@ void currentChoiceOptionNext()
 
   draw(B, CRGB::Red, 1, 0);
   draw(R, CRGB::Red, 1, 4);
+  drawNumber(brightness, CRGB::Yellow, 1, 8);
   draw(B, CRGB::Red, 8, 0);
   
   draw(CURRENTOPTION, CRGB::Blue, currentChoiceOptions*7, 0);
@@ -44,6 +45,7 @@ void currentChoiceOptionBackward()
   
   draw(B, CRGB::Red, 1, 0);
   draw(R, CRGB::Red, 1, 4);
+  drawNumber(brightness, CRGB::Yellow, 1, 8);
   draw(B, CRGB::Red, 8, 0);
   
   draw(CURRENTOPTION, CRGB::Blue, currentChoiceOptions*7, 0);
@@ -53,10 +55,23 @@ void currentChoiceOptionBackward()
 
 void optionHigher()
 {
+  if(brightness == 200)
+    return;
+  
   if(currentChoiceOptions == 0)
   {
-    brightness++;
+    clearLEDMatrix();
+    
+    brightness++;    
     FastLED.setBrightness(brightness);
+
+    draw(B, CRGB::Red, 1, 0);
+    draw(R, CRGB::Red, 1, 4);
+    drawNumber(brightness, CRGB::Yellow, 1, 8);
+    draw(B, CRGB::Red, 8, 0);
+  
+    draw(CURRENTOPTION, CRGB::Blue, currentChoiceOptions*7, 0);
+    
     refreshLEDMatrix();
   }
   
@@ -69,8 +84,18 @@ void optionLower()
   
   if(currentChoiceOptions == 0)
   {
-    brightness--;
+    clearLEDMatrix();
+    
+    brightness--;    
     FastLED.setBrightness(brightness);
+
+    draw(B, CRGB::Red, 1, 0);
+    draw(R, CRGB::Red, 1, 4);
+    drawNumber(brightness, CRGB::Yellow, 1, 8);
+    draw(B, CRGB::Red, 8, 0);
+  
+    draw(CURRENTOPTION, CRGB::Blue, currentChoiceOptions*7, 0);
+    
     refreshLEDMatrix();
   }
 }
