@@ -3,6 +3,14 @@
 #include <MemoryFree.h>;
 
 //global variables
+//int currentBlock[4][2] = 
+//{
+//  {0,0},
+//  {0,0},
+//  {0,0},
+//  {0,0}
+//};
+
 class Coordinates {
   public:
     int row;
@@ -12,7 +20,7 @@ LinkedList<Coordinates*> linkedList = LinkedList<Coordinates*>();
 Coordinates *pointCoordinate = new Coordinates();
 boolean gameover;
 int points = 0;
-typedef  enum snakeDirections {RIGHT, LEFT, TOP, DOWN}; 
+enum snakeDirections {RIGHT, LEFT, TOP, DOWN}; 
 int snakeDirection;
 
 enum Element { ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, 
@@ -36,8 +44,8 @@ void setup() {
  
 void loop() 
 {   
-    //Serial.print("Mem");
-    //Serial.print(freeMemory());
+    Serial.print("Mem");
+    Serial.print(freeMemory());
   
     switch(surface)
     {
@@ -64,6 +72,8 @@ void inputMenu(int input)
     case '3': currentChoiceBackward(); break;
     case '4': currentChoiceNext(); break;
     case '5': surface = selectChoice(); break;
+    case '6': currentChoiceBackward();break;
+    case '7': currentChoiceNext();break;
     default: break;
   }    
 }
@@ -90,10 +100,10 @@ void inputTetris(int input)
 {
    switch(input) 
    {
-      case '0': moveBlock(1,0);break;
-      case '1': moveBlock(0,1);break;
-      case '2': moveBlock(0,-1);break;
-      case '5': rotate(); break;
+      //case '0': moveBlock(1,0);break;
+      //case '1': moveBlock(0,1);break;
+      //case '2': moveBlock(0,-1);break;
+      //case '5': rotate(); break;
       default: break;
    }   
 }

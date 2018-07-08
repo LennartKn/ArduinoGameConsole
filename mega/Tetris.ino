@@ -1,25 +1,18 @@
-int currentBlock[4][2];
-int blockNumber;
-
 void startTetris()
 {
-  randomSeed(analogRead(0));
-  clearLEDMatrix();
-
-
-  //choose block randomly
-  blockNumber = random(0, 7);
-  Serial.write(blockNumber);
-  createBlock(blockNumber);
-  drawActiveBlock();
-  refreshLEDMatrix();
-  
+  //clearLEDMatrix();
+  //createBlock();
+  //drawActiveBlock();
+  //refreshLEDMatrix();
 }
 
-void createBlock(int i)
+void createBlock()
 {
+  //int i = random(0, 22);
+  //Serial.print(i);
+  int i = 5;
   
-  if (i == 0) //Quadrat
+  /* if (i == 0) //Quadrat
   {
     currentBlock[0][0] = 0; currentBlock[0][1] = 11;
     currentBlock[1][0] = 1; currentBlock[1][1] = 11;
@@ -67,7 +60,7 @@ void createBlock(int i)
     currentBlock[1][0] = 0; currentBlock[1][1] = 12;
     currentBlock[2][0] = 1; currentBlock[2][1] = 12;
     currentBlock[3][0] = 1; currentBlock[3][1] = 13;
-  }
+  } */
 }
 
 void drawActiveBlock()
@@ -76,7 +69,7 @@ void drawActiveBlock()
   
   for (int i = 0; i <= 3; i++)
   {
-    leds[getArrayIndexWithCoordinates(currentBlock[i][0], currentBlock[i][1])] = color;
+    //leds[getArrayIndexWithCoordinates(currentBlock[i][0], currentBlock[i][1])] = color;
   }
 }
 
@@ -87,12 +80,11 @@ void moveBlock(int row, int column)
     
     for (int i = 0; i <= 3; i++)
     {
-    currentBlock[i][0] = currentBlock[i][0] + row;
-    currentBlock[i][1] = currentBlock[i][1] + column;
+    //currentBlock[i][0] = currentBlock[i][0] + row;
+    //currentBlock[i][1] = currentBlock[i][1] + column;
     }
     
   drawActiveBlock();
-  FastLED.show();
 }
 
 void rotate()

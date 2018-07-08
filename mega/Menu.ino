@@ -51,7 +51,6 @@ void currentChoiceBackward()
 
 int selectChoice()
 {
-  Serial.print(currentChoice);
   switch(currentChoice)
   {
     case 0: startSnake();break;

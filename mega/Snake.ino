@@ -25,9 +25,9 @@ void startSnake()
   linkedList.add(coordinate2);
   linkedList.add(coordinate3);
   linkedList.add(coordinate4);
-  
-  randomSeed(analogRead(0));
 
+  randomSeed(analogRead(0));
+  
   pointCoordinate -> row = random(0, 22);
   pointCoordinate -> col = random(0, 22);
   
@@ -43,6 +43,7 @@ void startSnake()
 
 void moveSnakeForward()
 {
+  
     delay(200);
     
     clearLEDMatrix();    
