@@ -50,12 +50,12 @@ void currentChoiceBackward()
 }
 
 int selectChoice()
-{
+{  
   switch(currentChoice)
   {
-    case 0: startSnake();break;
-    case 1: startTetris();break;
-    case 2: startOptions();break;
+    case 0: startSnake(); break;
+    case 1: startTetris2(); break;
+    case 2: startOptions(); break;
     default: break;
   }
   

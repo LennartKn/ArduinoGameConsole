@@ -16,7 +16,7 @@ void refreshLEDMatrix()
 
 void clearLEDMatrix()
 {
-    FastLED.clear();
+   FastLED.clear();
 }
 
 int getArrayIndexWithCoordinates(int row, int col)
@@ -292,6 +292,14 @@ void drawSnakeList(CRGB color) //LinkedList<Coordinates*> linkedList)
   }
 }
 
+void drawTetrisGround(CRGB color) //LinkedList<Coordinates*> linkedList)
+{
+  for(int i = 0; i < tetrisGround.size(); i++)
+  {
+    leds[getArrayIndexWithCoordinates(tetrisGround.get(i) -> row, tetrisGround.get(i) -> col)] = color;
+  }
+}
+
 void showGameOverScreen(int input)
 {
    delay(1000);
@@ -304,5 +312,23 @@ void showGameOverScreen(int input)
        gameover = false;
        startSnake();
     }
+}
+
+void drawActiveBlock()
+{
+  CRGB color = CRGB::Green;
+  
+  for (int i = 0; i <= 3; i++)
+  {
+    leds[getArrayIndexWithCoordinates(currentBlock[i][0], currentBlock[i][1])] = color;
+  }
+}
+
+void drawTetrisBorder()
+{
+  for(int i = 0; i < 22; i++)
+  {
+    leds[getArrayIndexWithCoordinates(i, 12)] = CRGB::Blue;
+  }
 }
 

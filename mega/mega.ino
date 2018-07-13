@@ -1,29 +1,24 @@
 #include <FastLED.h>
 #include <LinkedList.h>
-#include <MemoryFree.h>;
+#include <MemoryFree.h>
 
 //global variables
-//int currentBlock[4][2] = 
-//{
-//  {0,0},
-//  {0,0},
-//  {0,0},
-//  {0,0}
-//};
-
 class Coordinates {
   public:
     int row;
     int col;
 };
+int currentBlock[4][2];
 LinkedList<Coordinates*> linkedList = LinkedList<Coordinates*>();
+LinkedList<Coordinates*> tetrisGround = LinkedList<Coordinates*>();
 Coordinates *pointCoordinate = new Coordinates();
 boolean gameover;
 int points = 0;
-enum snakeDirections {RIGHT, LEFT, TOP, DOWN}; 
+typedef  enum snakeDirections {RIGHT, LEFT, TOP, DOWN}; 
 int snakeDirection;
+typedef enum blockPosition { BLOCKTOP, BLOCKDOWN, BLOCKLEFT, BLOCKRIGHT};
 
-enum Element { ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, 
+typedef enum Element { ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, 
               CURRENTOPTION, QUESTIONMARK, 
               A, B, R, SNAKE, TETRIS, OPT };
 
@@ -37,16 +32,14 @@ void setup() {
   
   Serial.begin(9600);
   setupLEDMatrix();
-
-  showMenu();
   surface = 0;
+  randomSeed(analogRead(A0));
+    
+  showMenu();
 }
  
 void loop() 
 {   
-    Serial.print("Mem");
-    Serial.print(freeMemory());
-  
     switch(surface)
     {
       case 0: inputMenu(btData);break; //Menu
@@ -62,7 +55,6 @@ void loop()
 void serialEvent()
 {
   btData = Serial.read();
-  //Serial.print(btData);
 }
 
 void inputMenu(int input)
@@ -72,8 +64,6 @@ void inputMenu(int input)
     case '3': currentChoiceBackward(); break;
     case '4': currentChoiceNext(); break;
     case '5': surface = selectChoice(); break;
-    case '6': currentChoiceBackward();break;
-    case '7': currentChoiceNext();break;
     default: break;
   }    
 }
@@ -100,11 +90,11 @@ void inputTetris(int input)
 {
    switch(input) 
    {
-      //case '0': moveBlock(1,0);break;
-      //case '1': moveBlock(0,1);break;
-      //case '2': moveBlock(0,-1);break;
-      //case '5': rotate(); break;
-      default: break;
+        case '0': moveBlock2(1,0); break;
+        case '1': moveBlockHorizontal(0,1); break;
+        case '2': moveBlockHorizontal(0,-1); break;
+        case '5': rotate2(); break;
+        default: break;
    }   
 }
 
@@ -120,8 +110,6 @@ void inputOptions(int input)
         default: break;
    }
 }
-
-
 
 
 
