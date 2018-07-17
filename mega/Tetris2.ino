@@ -19,7 +19,7 @@ void startTetris2()
 
 void moveBlock2(int row, int col)
 {
-  delay(200);
+  delay(500);
   drawTetrisBorder();
 
   if (isHit(row, col))
@@ -163,12 +163,20 @@ void rotate2()
       int newCol = -1 * (currentBlock[i][0] - rowCenter) + colCenter;
       int newRow = 1 * (currentBlock[i][1] - colCenter) + rowCenter;
 
-      if (isHit(newRow - currentBlock[i][0], newCol - currentBlock[i][1])) {
-        hit = true;
-      }
 
       currentBlock[i][0] = newRow;
       currentBlock[i][1] = newCol;
+
+      //if (isHit(newRow - currentBlock[i][0], newCol - currentBlock[i][1])) {
+      if (isHit(0,0)) {
+        hit = true;
+      }
+
+      //currentBlock[i][0] = newRow;
+      //currentBlock[i][1] = newCol;
+
+      //Serial.println("x: " + currentBlock[i][0]);
+      //Serial.println("y: " + currentBlock[i][1]);
     }
 
     if (hit)
@@ -181,17 +189,17 @@ void rotate2()
         currentBlock[i][1] = newCol;
       }
     }
-
-    clearLEDMatrix();
-
-    drawTetrisBorder();
-    drawActiveBlock();
-    drawTetrisGround(CRGB::Red);
-
-    refreshLEDMatrix();
   }
 
+  clearLEDMatrix();
+
+  drawTetrisBorder();
+  drawActiveBlock();
+  drawTetrisGround(CRGB::Red);
+
+  refreshLEDMatrix();
 }
+
 
 boolean isHit(int row, int col)
 {
@@ -295,11 +303,11 @@ void printArray()
 }
 
 
-void gameOver(){
+void gameOver() {
 
-  for(int i = tetrisGround.size() - 1; i > 0 ; i--){
-    
-    if(tetrisGround.get(i) -> row == 0){
+  for (int i = tetrisGround.size() - 1; i > 0 ; i--) {
+
+    if (tetrisGround.get(i) -> row == 0) {
       gameover = true;
       Serial.println("Hi");
     }
@@ -307,7 +315,7 @@ void gameOver(){
 
 }
 
-void deleteTetrisList(){
+void deleteTetrisList() {
 
   tetrisGround.clear();
 }
