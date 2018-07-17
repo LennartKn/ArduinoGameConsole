@@ -5,7 +5,7 @@ CRGB leds[amountLEDs];
 void setupLEDMatrix()
 {
   FastLED.addLeds<NEOPIXEL, LEDDataPin>(leds, amountLEDs);
-  brightness = 10;
+  brightness = 1;
   FastLED.setBrightness(brightness);
 }
 
@@ -310,7 +310,7 @@ void showGameOverScreen(int input)
    if(input == '5')
     {
        gameover = false;
-       startSnake();
+       showMenu();
     }
 }
 

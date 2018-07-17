@@ -11,13 +11,13 @@ void startTetris2()
   drawTetrisBorder();
   createBlock2();
   drawActiveBlock();
-
+  points = 0;
   refreshLEDMatrix();
 }
 
 void moveBlock2(int row, int col)
 {
-  delay(200);
+  delay(350);
   drawTetrisBorder();
 
   if (isHit(row, col))
@@ -189,17 +189,6 @@ void rotate2()
     refreshLEDMatrix();
   }
 
-  /* switch(blockNumber)
-    {
-    case 1: break;
-    case 2: rotatePlank(); break;
-    case 3: rotateL();break;
-    case 4: rotateReverseL();break;
-    case 5: rotatePyramide();break;
-    case 6: rotateZ();break;
-    case 7: rotateReverseZ;break;
-    default: break;
-    } */
 }
 
 boolean isHit(int row, int col)
@@ -228,6 +217,7 @@ void addCoordinatesToTetrisGround()
     coordinate -> col = currentBlock[i][1];
 
     tetrisGround.add(coordinate);
+    gameOver();
   }
 }
 
@@ -261,6 +251,7 @@ boolean isCompleteRow()
     if (rowArray[i] == 12)
     {
       removeRow(i);
+      points++;
       isComplete = true;
     }
   }
@@ -301,58 +292,15 @@ void printArray()
   Serial.println("");
 }
 
-void rotatePlank()
-{
-  currentBlock[0][0] = currentBlock[0][0] + 2;
-  currentBlock[0][1] = currentBlock[0][1] + 2;
 
-  currentBlock[1][0] = 1;
-  currentBlock[1][1] = 5;
+void gameOver(){
 
-  currentBlock[2][0] = currentBlock[2][0];
-  currentBlock[2][1] = currentBlock[2][1];
+  for(int i = tetrisGround.size() - 1; i > 0 ; i--){
+    
+    if(tetrisGround.get(i) -> row == 0){
+      gameover = true;
+      Serial.println("Hi");
+    }
+  }
 
-  currentBlock[3][0] = 3;
-  currentBlock[3][1] = 5;
 }
-
-void rotateL()
-{
-  currentBlock[0][0] = 0; currentBlock[0][1] = 5;
-  currentBlock[1][0] = 1; currentBlock[1][1] = 5;
-  currentBlock[2][0] = 2; currentBlock[2][1] = 5;
-  currentBlock[3][0] = 2; currentBlock[3][1] = 6;
-}
-
-void rotateReverseL()
-{
-  currentBlock[0][0] = 0; currentBlock[0][1] = 5;
-  currentBlock[1][0] = 1; currentBlock[1][1] = 5;
-  currentBlock[2][0] = 2; currentBlock[2][1] = 5;
-  currentBlock[3][0] = 2; currentBlock[3][1] = 4;
-}
-
-void rotatePyramide()
-{
-  currentBlock[0][0] = 0; currentBlock[0][1] = 5;
-  currentBlock[1][0] = 1; currentBlock[1][1] = 5;
-  currentBlock[2][0] = 1; currentBlock[2][1] = 4;
-  currentBlock[3][0] = 1; currentBlock[3][1] = 6;
-}
-
-void rotateZ()
-{
-  currentBlock[0][0] = 0; currentBlock[0][1] = 6;
-  currentBlock[1][0] = 0; currentBlock[1][1] = 5;
-  currentBlock[2][0] = 1; currentBlock[2][1] = 5;
-  currentBlock[3][0] = 1; currentBlock[3][1] = 4;
-}
-
-void rotateReverseZ()
-{
-  currentBlock[0][0] = 0; currentBlock[0][1] = 5;
-  currentBlock[1][0] = 0; currentBlock[1][1] = 6;
-  currentBlock[2][0] = 1; currentBlock[2][1] = 6;
-  currentBlock[3][0] = 1; currentBlock[3][1] = 7;
-}
-

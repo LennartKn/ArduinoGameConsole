@@ -88,6 +88,12 @@ void inputSnake(int input)
 
 void inputTetris(int input)
 {
+  if(gameover){
+    showGameOverScreen(input);
+  }
+  else
+  {
+  
    switch(input) 
    {
         case '0': moveBlock2(1,0); break;
@@ -95,7 +101,8 @@ void inputTetris(int input)
         case '2': moveBlockHorizontal(0,-1); break;
         case '5': rotate2(); break;
         default: break;
-   }   
+   }
+  }   
 }
 
 void inputOptions(int input)
