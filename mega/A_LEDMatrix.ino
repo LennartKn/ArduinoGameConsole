@@ -309,6 +309,7 @@ void showGameOverScreen(int input)
    
    if(input == '5')
     {
+      surface = 0;
        gameover = false;
        showMenu();
     }
@@ -331,4 +332,6 @@ void drawTetrisBorder()
     leds[getArrayIndexWithCoordinates(i, 12)] = CRGB::Blue;
   }
 }
+
+
 

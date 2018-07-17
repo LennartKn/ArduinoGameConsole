@@ -4,6 +4,8 @@ int blockPosition;
 
 void startTetris2()
 {
+
+  tetrisGround.clear();
   blockPosition = BLOCKTOP;
 
   clearLEDMatrix();
@@ -17,7 +19,7 @@ void startTetris2()
 
 void moveBlock2(int row, int col)
 {
-  delay(350);
+  delay(200);
   drawTetrisBorder();
 
   if (isHit(row, col))
@@ -303,4 +305,9 @@ void gameOver(){
     }
   }
 
+}
+
+void deleteTetrisList(){
+
+  tetrisGround.clear();
 }

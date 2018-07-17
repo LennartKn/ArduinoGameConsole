@@ -8,13 +8,13 @@ class Coordinates {
     int row;
     int col;
 };
+typedef  enum snakeDirections {RIGHT, LEFT, TOP, DOWN}; 
 int currentBlock[4][2];
 LinkedList<Coordinates*> linkedList = LinkedList<Coordinates*>();
 LinkedList<Coordinates*> tetrisGround = LinkedList<Coordinates*>();
 Coordinates *pointCoordinate = new Coordinates();
 boolean gameover;
 int points = 0;
-typedef  enum snakeDirections {RIGHT, LEFT, TOP, DOWN}; 
 int snakeDirection;
 typedef enum blockPosition { BLOCKTOP, BLOCKDOWN, BLOCKLEFT, BLOCKRIGHT};
 
@@ -70,8 +70,10 @@ void inputMenu(int input)
 
 void inputSnake(int input)
 {
-  if(gameover)
+  if(gameover){
     showGameOverScreen(input);
+    //surface = 0;
+  }
   else
   {
     switch(input) 
@@ -90,6 +92,7 @@ void inputTetris(int input)
 {
   if(gameover){
     showGameOverScreen(input);
+    //surface = 0;
   }
   else
   {

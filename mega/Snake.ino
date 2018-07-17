@@ -144,5 +144,11 @@ void checkForPoint(Coordinates *coordinate)
     
 }
 
+void deleteSnakeList(){
+
+  linkedList.clear();
+  
+}
+
 
 
