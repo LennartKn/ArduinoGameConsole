@@ -20,7 +20,7 @@ typedef enum blockPosition { BLOCKTOP, BLOCKDOWN, BLOCKLEFT, BLOCKRIGHT};
 
 typedef enum Element { ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, 
               CURRENTOPTION, QUESTIONMARK, 
-              A, B, R, SNAKE, TETRIS, OPT };
+              A, B, R, C, K, SNAKE, TETRIS, OPT };
 
 int brightness;
 
@@ -99,9 +99,10 @@ void inputTetris(int input)
   
    switch(input) 
    {
-        case '0': moveBlock2(1,0); break;
+        case '0': moveBlock2(1,0, 500); break;
         case '1': moveBlockHorizontal(0,1); break;
         case '2': moveBlockHorizontal(0,-1); break;
+        case '4': moveBlock2(1,0, 50); break;
         case '5': rotate2(); break;
         default: break;
    }

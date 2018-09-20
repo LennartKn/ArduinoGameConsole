@@ -17,9 +17,9 @@ void startTetris2()
   refreshLEDMatrix();
 }
 
-void moveBlock2(int row, int col)
+void moveBlock2(int row, int col, int delayBlock)
 {
-  delay(500);
+  delay(delayBlock);
   drawTetrisBorder();
 
   if (isHit(row, col))
@@ -71,7 +71,7 @@ void moveBlockHorizontal(int row, int col)
 {
   if (isHit(row, col))
   {
-    moveBlock2(1, 0);
+    moveBlock2(1, 0, 500);
 
     return;
   }

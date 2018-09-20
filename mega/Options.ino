@@ -8,7 +8,11 @@ void startOptions()
   
   draw(B, CRGB::Red, 1, 0);
   draw(R, CRGB::Red, 1, 4);
+  drawNumber(brightness, CRGB::Yellow, 1, 8);
   draw(B, CRGB::Red, 8, 0);
+  draw(A, CRGB::Red, 8, 4);
+  draw(C, CRGB::Red, 8, 8);
+  draw(K, CRGB::Red, 8, 12);
   
   draw(CURRENTOPTION, CRGB::Blue, 0, 0);
 
@@ -28,6 +32,9 @@ void currentChoiceOptionNext()
   draw(R, CRGB::Red, 1, 4);
   drawNumber(brightness, CRGB::Yellow, 1, 8);
   draw(B, CRGB::Red, 8, 0);
+  draw(A, CRGB::Red, 8, 4);
+  draw(C, CRGB::Red, 8, 8);
+  draw(K, CRGB::Red, 8, 12);
   
   draw(CURRENTOPTION, CRGB::Blue, currentChoiceOptions*7, 0);
 
@@ -47,6 +54,9 @@ void currentChoiceOptionBackward()
   draw(R, CRGB::Red, 1, 4);
   drawNumber(brightness, CRGB::Yellow, 1, 8);
   draw(B, CRGB::Red, 8, 0);
+  draw(A, CRGB::Red, 8, 4);
+  draw(C, CRGB::Red, 8, 8);
+  draw(K, CRGB::Red, 8, 12);
   
   draw(CURRENTOPTION, CRGB::Blue, currentChoiceOptions*7, 0);
   
@@ -69,6 +79,9 @@ void optionHigher()
     draw(R, CRGB::Red, 1, 4);
     drawNumber(brightness, CRGB::Yellow, 1, 8);
     draw(B, CRGB::Red, 8, 0);
+    draw(A, CRGB::Red, 8, 4);
+    draw(C, CRGB::Red, 8, 8);
+    draw(K, CRGB::Red, 8, 12);
   
     draw(CURRENTOPTION, CRGB::Blue, currentChoiceOptions*7, 0);
     
@@ -93,6 +106,9 @@ void optionLower()
     draw(R, CRGB::Red, 1, 4);
     drawNumber(brightness, CRGB::Yellow, 1, 8);
     draw(B, CRGB::Red, 8, 0);
+    draw(A, CRGB::Red, 8, 4);
+    draw(C, CRGB::Red, 8, 8);
+    draw(K, CRGB::Red, 8, 12);
   
     draw(CURRENTOPTION, CRGB::Blue, currentChoiceOptions*7, 0);
     

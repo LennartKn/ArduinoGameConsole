@@ -5,7 +5,7 @@ CRGB leds[amountLEDs];
 void setupLEDMatrix()
 {
   FastLED.addLeds<NEOPIXEL, LEDDataPin>(leds, amountLEDs);
-  brightness = 1;
+  brightness = 7;
   FastLED.setBrightness(brightness);
 }
 
@@ -51,8 +51,12 @@ void draw(int element, CRGB color, int startRow, int startCol)
     case CURRENTOPTION: drawCurrentOption(color, startRow, startCol); break;
     case B: drawB(color, startRow, startCol); break;
     case R: drawR(color, startRow, startCol); break;
+    case A: drawA(color, startRow, startCol); break;
+    case C: drawC(color, startRow, startCol); break;
+    case K: drawK(color, startRow, startCol); break;
     case SNAKE: drawSnake(color, startRow, startCol); break;
     case TETRIS: drawTetris(color, startRow, startCol); break;
+    case OPT: drawOpt(color, startRow, startCol); break;
     default: QUESTIONMARK: drawQuestionMark(color, startRow, startCol); break;
   }
 }
@@ -69,14 +73,30 @@ void drawNumber(int number, CRGB color, int startRow, int startCol)
   }
 }
 
+void drawOpt(CRGB color, int row, int col)
+{
+  drawO(color, row, col);
+  drawP(color, row, col + 4);
+  drawT(color, row, col + 8);
+}
+
 void drawSnake(CRGB color, int row, int col)
 {
-  
+  drawS(color, row, col);
+  drawN(color, row, col + 4);
+  drawA(color, row, col + 8);
+  drawK(color, row, col + 12);
+  drawE(color, row, col + 16);
 }
 
 void drawTetris(CRGB color, int row, int col)
 {
-  
+  drawT(color, row, col);
+  drawE(color, row, col + 4);
+  drawT(color, row, col + 8);
+  drawR(color, row, col + 12);
+  drawI(color, row, col + 15);
+  drawS(color, row, col + 18);
 }
 
 void drawZero(CRGB color, int row, int col)
@@ -248,6 +268,21 @@ void drawCurrentOption(CRGB color, int row, int col)
   }
 }
 
+void drawA(CRGB color, int row, int col)
+{
+  leds[getArrayIndexWithCoordinates(row, col)] = color;
+  leds[getArrayIndexWithCoordinates(row, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row, col+2)] = color;
+  leds[getArrayIndexWithCoordinates(row+1, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+1, col+2)] = color;
+  leds[getArrayIndexWithCoordinates(row+2, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+2, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row+2, col+2)] = color;
+  leds[getArrayIndexWithCoordinates(row+3, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+3, col+2)] = color;
+  leds[getArrayIndexWithCoordinates(row+4, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+4, col+2)] = color;
+}
 void drawB(CRGB color, int row, int col)
 {
   leds[getArrayIndexWithCoordinates(row, col)] = color;
@@ -263,7 +298,96 @@ void drawB(CRGB color, int row, int col)
   leds[getArrayIndexWithCoordinates(row+4, col+1)] = color;
   leds[getArrayIndexWithCoordinates(row+4, col+2)] = color;
 }
+void drawC(CRGB color, int row, int col)
+{
+  leds[getArrayIndexWithCoordinates(row, col)] = color;
+  leds[getArrayIndexWithCoordinates(row, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row, col+2)] = color;
+  leds[getArrayIndexWithCoordinates(row+1, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+2, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+3, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+4, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+4, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row+4, col+2)] = color;
+}
+void drawE(CRGB color, int row, int col)
+{
+  leds[getArrayIndexWithCoordinates(row, col)] = color;
+  leds[getArrayIndexWithCoordinates(row, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row, col+2)] = color;
+  leds[getArrayIndexWithCoordinates(row+1, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+2, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+2, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row+2, col+2)] = color;
+  leds[getArrayIndexWithCoordinates(row+3, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+4, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+4, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row+4, col+2)] = color;
+}
+void drawI(CRGB color, int row, int col)
+{
+  leds[getArrayIndexWithCoordinates(row, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row+1, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row+2, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row+3, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row+4, col+1)] = color;
+}
+void drawK(CRGB color, int row, int col)
+{
+  leds[getArrayIndexWithCoordinates(row, col)] = color;
+  leds[getArrayIndexWithCoordinates(row, col+2)] = color;
+  leds[getArrayIndexWithCoordinates(row+1, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+1, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row+2, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+3, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+3, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row+4, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+4, col+2)] = color;
+}
+void drawN(CRGB color, int row, int col)
+{
+  leds[getArrayIndexWithCoordinates(row, col)] = color;
+  leds[getArrayIndexWithCoordinates(row, col+2)] = color;
+  leds[getArrayIndexWithCoordinates(row+1, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+1, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row+1, col+2)] = color;
+  leds[getArrayIndexWithCoordinates(row+2, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+2, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row+2, col+2)] = color;
+  leds[getArrayIndexWithCoordinates(row+3, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+3, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row+3, col+2)] = color;
+  leds[getArrayIndexWithCoordinates(row+4, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+4, col+2)] = color;
+}
 
+void drawO(CRGB color, int row, int col)
+{
+  leds[getArrayIndexWithCoordinates(row, col)] = color;
+  leds[getArrayIndexWithCoordinates(row, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row, col+2)] = color;
+  leds[getArrayIndexWithCoordinates(row+1, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+1, col+2)] = color;
+  leds[getArrayIndexWithCoordinates(row+2, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+2, col+2)] = color;
+  leds[getArrayIndexWithCoordinates(row+3, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+3, col+2)] = color;
+  leds[getArrayIndexWithCoordinates(row+4, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+4, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row+4, col+2)] = color;
+}
+void drawP(CRGB color, int row, int col)
+{
+  leds[getArrayIndexWithCoordinates(row, col)] = color;
+  leds[getArrayIndexWithCoordinates(row, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row, col+2)] = color;
+  leds[getArrayIndexWithCoordinates(row+1, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+1, col+2)] = color;
+  leds[getArrayIndexWithCoordinates(row+2, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+2, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row+3, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+4, col)] = color;
+}
 void drawR(CRGB color, int row, int col)
 {
   leds[getArrayIndexWithCoordinates(row, col)] = color;
@@ -278,6 +402,29 @@ void drawR(CRGB color, int row, int col)
   leds[getArrayIndexWithCoordinates(row+4, col)] = color;
   leds[getArrayIndexWithCoordinates(row+4, col+2)] = color;
 }
+void drawS(CRGB color, int row, int col)
+{
+  leds[getArrayIndexWithCoordinates(row, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row, col+2)] = color;
+  leds[getArrayIndexWithCoordinates(row+1, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+2, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+2, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row+2, col+2)] = color;
+  leds[getArrayIndexWithCoordinates(row+3, col+2)] = color;
+  leds[getArrayIndexWithCoordinates(row+4, col)] = color;
+  leds[getArrayIndexWithCoordinates(row+4, col+1)] = color;
+}
+void drawT(CRGB color, int row, int col)
+{
+  leds[getArrayIndexWithCoordinates(row, col)] = color;
+  leds[getArrayIndexWithCoordinates(row, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row, col+2)] = color;
+  leds[getArrayIndexWithCoordinates(row+1, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row+2, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row+3, col+1)] = color;
+  leds[getArrayIndexWithCoordinates(row+4, col+1)] = color;
+}
+
 
 void drawPoint(CRGB color)
 {
